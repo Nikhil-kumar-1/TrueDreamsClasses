@@ -1,0 +1,25 @@
+import React from 'react'
+import HeroSection from '../Hero/Hero'
+import AboutUs from '../About/About'
+import ScholarshipPopup from '../Scholarship/Scholarship'
+import AboutAndCourses from '../Courses/Courses'
+import WhyChooseUs from '../ChooseUs/ChooseUs'
+import DirectorSection from '../Director/Director'
+// import GetInTouchSection from '../GetInTouch/GetInTouch'
+
+
+const Home = () => {
+  return (
+    <div>
+      <HeroSection />
+      <AboutUs />
+      <ScholarshipPopup />
+      <AboutAndCourses />
+      <WhyChooseUs />
+      <DirectorSection />
+      {/* <GetInTouchSection /> */}
+    </div>
+  )
+}
+
+export default Home
