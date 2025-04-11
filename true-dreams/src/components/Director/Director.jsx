@@ -43,7 +43,7 @@ const DirectorSection = () => {
             >
               <div className="h-full w-full bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                  src="2.png"
                   alt="Dr. Gaurav Sinha"
                   className="object-cover h-full w-full"
                 />

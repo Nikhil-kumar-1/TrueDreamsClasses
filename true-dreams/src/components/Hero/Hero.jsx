@@ -95,8 +95,8 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-gray-700 mb-8 max-w-lg"
             >
-              Join India's premier coaching institute with a proven track record of success. 
-              Our expert faculty and personalized approach will help you achieve your academic dreams.
+              Dreaming of becoming a doctor? Join India’s premier coaching institute, trusted for its success.
+With expert faculty and a personalized approach, we help future doctors achieve their academic dreams.
             </motion.p>
             
             <motion.div
@@ -164,7 +164,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/20 relative z-10"
+            className="bg-white/90 backdrop-blur-sm p-12 rounded-xl shadow-2xl border border-white/20 relative z-10"
           >
             <div className="absolute -top-3 -right-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
               Free Consultation

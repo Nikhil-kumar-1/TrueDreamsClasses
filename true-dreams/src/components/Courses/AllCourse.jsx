@@ -1,89 +1,131 @@
 import { motion } from "framer-motion";
-import { FaArrowRight, FaCheck, FaChalkboardTeacher, FaRegCalendarAlt, FaPercentage } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaCheck,
+  FaChalkboardTeacher,
+  FaRegCalendarAlt,
+  FaPercentage,
+  FaUserMd,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 const Courses = () => {
   const courses = [
     {
       title: "Foundation Course",
-      price: "70,000",
-      discount: "15% minimum",
+      originalPrice: "70000",
+      discountedPrice: "59500",
+      discount: "15% OFF",
       icon: <FaChalkboardTeacher className="text-3xl" />,
-      description: "A specialized program for NEET aspirants who've completed 12th. Includes in-depth subject coverage, extensive test series, and expert guidance for top performance.",
+      description:
+        "A specialized program for NEET aspirants who've completed 12th. Includes in-depth subject coverage, extensive test series, and expert guidance for top performance.",
       features: [
         "Complete NEET syllabus coverage",
         "100+ mock tests",
         "Doubt clearing sessions",
-        "Personalized mentorship"
+        "Personalized mentorship",
       ],
-      color: "from-blue-500 to-blue-700"
+      color: "from-blue-500 to-blue-700",
     },
     {
       title: "Advance Course",
-      price: "75,000",
-      discount: "15% minimum",
+      originalPrice: "75000",
+      discountedPrice: "63750",
+      discount: "15% OFF",
       icon: <FaRegCalendarAlt className="text-3xl" />,
-      description: "Structured program for 11th pass students, building strong conceptual foundation. Includes detailed explanations, doubt sessions, and regular assessments.",
+      description:
+        "Structured program for 11th pass students, building strong conceptual foundation. Includes detailed explanations, doubt sessions, and regular assessments.",
       features: [
         "Concept building modules",
         "Weekly assessments",
         "NCERT + advanced content",
-        "Performance analytics"
+        "Performance analytics",
       ],
-      color: "from-purple-500 to-purple-700"
+      color: "from-purple-500 to-purple-700",
     },
     {
       title: "Target Course",
-      price: "80,000",
-      discount: "15% minimum",
+      originalPrice: "80,000",
+      discountedPrice: "68,000",
+      discount: "15% OFF",
       icon: <FaPercentage className="text-3xl" />,
-      description: "Early preparation for 10th pass students. Strengthens fundamentals, improves problem-solving, and lays groundwork for medical entrance exams.",
+      description:
+        "Early preparation for 10th pass students. Strengthens fundamentals, improves problem-solving, and lays groundwork for medical entrance exams.",
       features: [
         "Foundation building",
         "Basic to advanced concepts",
         "Regular practice tests",
-        "Study plan customization"
+        "Study plan customization",
       ],
-      color: "from-green-500 to-green-700"
-    }
+      color: "from-green-500 to-green-700",
+    },
+    {
+      title: "Individualized Counseling",
+      originalPrice: "70,000",
+      discountedPrice: "59500",
+      discount: "15% OFF",
+      icon: <FaUserMd className="text-3xl" />,
+      description:
+        "Weekly one-on-one sessions with medical professionals for personalized guidance, career planning, and academic strategy tailored to your needs.",
+      features: [
+        "Weekly 1:1 sessions",
+        "Personalized study plans",
+        "Career guidance",
+        "Performance analysis",
+        "Mental wellness support",
+      ],
+      color: "from-red-500 to-red-700",
+    },
   ];
 
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white">
-       <Helmet>
+      <Helmet>
         <title>NEET Courses | True Dreams Classes</title>
-        <meta name="description" content="Best NEET preparation courses designed by certified doctors. Enroll now for foundation, advance, and target batches with flexible schedules." />
-        <meta name="keywords" content="NEET coaching, medical entrance, True Dreams Classes, foundation course, advance course, target course, flexible batches" />
+        <meta
+          name="description"
+          content="Best NEET preparation courses designed by certified doctors. Enroll now for foundation, advance, and target batches with flexible schedules."
+        />
+        <meta
+          name="keywords"
+          content="NEET coaching, medical entrance, True Dreams Classes, foundation course, advance course, target course, flexible batches"
+        />
         <link rel="canonical" href="https://yourwebsite.com/courses" />
       </Helmet>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-900 to-purple-800 text-white py-20 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Your <span className="text-yellow-300">Medical Dream</span> Starts Here
+              Your <span className="text-yellow-300">Medical Dream</span> Starts
+              Here
             </h1>
             <p className="text-xl mb-8">
-              Comprehensive NEET preparation programs designed by doctors who cracked medical entrance exams
+              Comprehensive NEET preparation programs designed by doctors who
+              cracked medical entrance exams
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to={"/apply"}
+              <Link
+                to={"/apply"}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-blue-900 font-bold py-3 px-8 rounded-full flex items-center gap-2"
               >
                 Get Free Demo Classes <FaArrowRight />
               </Link>
-              <Link to={"/contact"}
+              <Link
+                to={"/contact"}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-white text-white font-bold py-3 px-8 rounded-full"
@@ -97,7 +139,7 @@ const Courses = () => {
 
       {/* Courses Section */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -108,9 +150,14 @@ const Courses = () => {
             Our <span className="text-blue-600">Courses</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+          <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+            All our courses come with a special{" "}
+            <span className="font-bold text-blue-600">15% discount</span> on the
+            original price. Limited time offer for early enrollments!
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2  gap-8 mb-16">
           {courses.map((course, index) => (
             <motion.div
               key={index}
@@ -121,18 +168,30 @@ const Courses = () => {
               whileHover={{ y: -10 }}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
             >
-              <div className={`bg-gradient-to-r ${course.color} text-white p-6`}>
+              <div
+                className={`bg-gradient-to-r ${course.color} text-white p-6`}
+              >
                 <div className="flex justify-between items-center">
                   <h3 className="text-2xl font-bold">{course.title}</h3>
                   <div className="bg-white/20 p-3 rounded-full">
                     {course.icon}
                   </div>
                 </div>
-                <div className="mt-4 flex items-end justify-between">
-                  <div>
-                    <span className="text-3xl font-bold">₹{course.price}</span>
-                    <span className="block text-blue-100">After {course.discount} scholarship</span>
+                <div className="mt-4">
+                  <div className="flex items-end gap-2">
+                    <span className="text-3xl font-bold">
+                      ₹{course.discountedPrice}
+                    </span>
+                    <span className="text-sm line-through opacity-80">
+                      ₹{course.originalPrice}
+                    </span>
+                    <span className="ml-auto bg-white/20 px-2 py-1 rounded-full text-xs">
+                      {course.discount}
+                    </span>
                   </div>
+                  <span className="block text-sm mt-1 text-blue-100">
+                    After scholarship discount
+                  </span>
                 </div>
               </div>
               <div className="p-6">
@@ -145,14 +204,14 @@ const Courses = () => {
                     </li>
                   ))}
                 </ul>
-                <Link to={"/"}>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`cursor-pointer w-full py-3 px-6 rounded-lg bg-gradient-to-r ${course.color} text-white font-semibold`}
-                >
-                  Enroll Now
-                </motion.button>
+                <Link to={"/apply"}>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`cursor-pointer w-full py-3 px-6 rounded-lg bg-gradient-to-r ${course.color} text-white font-semibold`}
+                  >
+                    Enroll Now
+                  </motion.button>
                 </Link>
               </div>
             </motion.div>
@@ -171,32 +230,42 @@ const Courses = () => {
             <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
               <h3 className="text-2xl font-bold mb-4">Flexible Scheduling</h3>
               <p className="mb-4">
-                We understand the importance of time management for students. Our flexible class schedules allow 
-                students to learn at their own pace without compromising on other academic responsibilities.
+                We understand the importance of time management for students.
+                Our flexible class schedules allow students to learn at their
+                own pace without compromising on other academic
+                responsibilities.
               </p>
               <div className="flex flex-wrap gap-3">
-                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Morning Batches</span>
-                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Evening Batches</span>
-                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Weekend Classes</span>
-                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">Recorded Lectures</span>
+                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
+                  Morning Batches
+                </span>
+                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
+                  Evening Batches
+                </span>
+                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
+                  Weekend Classes
+                </span>
+                <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
+                  Recorded Lectures
+                </span>
               </div>
             </div>
             <div className="md:w-1/3 flex justify-center">
               <div className="bg-white/20 p-6 rounded-xl backdrop-blur-sm">
                 <h4 className="text-xl font-bold mb-3">Batch Timings</h4>
-                <ul className="space-y-2">
-                  <li className="flex justify-between">
+                <ul className="space-y-4">
+                  <li className="flex justify-between gap-1">
                     <span>Morning:</span>
-                    <span className="font-medium">7AM - 9AM</span>
+                    <span className="font-medium"> 7:30AM - 12:00PM </span>
                   </li>
-                  <li className="flex justify-between">
-                    <span>Afternoon:</span>
-                    <span className="font-medium">2PM - 4PM</span>
+                  <li className="flex justify-between gap-1">
+                    <span>Evening:</span>
+                    <span className="font-medium">4:00PM - 8:00PM </span>
                   </li>
-                  <li className="flex justify-between">
+                  {/* <li className="flex justify-between">
                     <span>Evening:</span>
                     <span className="font-medium">5PM - 7PM</span>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -212,18 +281,42 @@ const Courses = () => {
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            Take the First Step Towards Your <span className="text-blue-600">Medical Dream!</span>
+            Take the First Step Towards Your{" "}
+            <span className="text-blue-600">Medical Dream!</span>
           </h3>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-            Join True Dreams Classes today and get expert guidance from certified doctors who have successfully cracked medical entrance exams. Limited seats available!
+            Join True Dreams Classes today and get expert guidance from
+            certified doctors who have successfully cracked medical entrance
+            exams. Limited seats available!
           </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             {[
-              { icon: "🎯", text: "4 Demo Classes Free" },
-              { icon: "💰", text: "100% Refund Guarantee" },
-              { icon: "🏆", text: "Scholarship Test Available" },
-              { icon: "🧠", text: "Career Counseling" }
+              {
+                icon: "🎯",
+                text: "1 Month Paid Demo – 100% Refund If Not Satisfied!",
+              },
+
+              {
+                icon: "🏆",
+                text: "Scholarship Test Available (Up to 50% Off)",
+              },
+              {
+                icon: "🧠",
+                text: "Personalized Career Counseling + Stress Management",
+              },
+              {
+                icon: "👨‍⚕️",
+                text: "1-on-1 Mentorship Sessions",
+              },
+              {
+                icon: "📊",
+                text: "Individualized Performance Analytics",
+              },
+              {
+                icon: "💯",
+                text: "100% Confidential Counseling Sessions",
+              },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 p-4 rounded-lg">
                 <div className="text-3xl mb-2">{item.icon}</div>
@@ -233,20 +326,23 @@ const Courses = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to={"/contact"}
+            <Link
+              to={"/contact"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full flex items-center justify-center gap-2"
             >
               Get Free Consultation <FaArrowRight />
             </Link>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="cursor-pointer border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-full"
-            >
-              Call Us: +91 9876543210
-            </motion.button>
+            <a href="tel:+919204100108">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="cursor-pointer border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-full"
+              >
+                Call Us: +91 9204100108
+              </motion.button>
+            </a>
           </div>
         </motion.div>
       </section>

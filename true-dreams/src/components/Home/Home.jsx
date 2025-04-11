@@ -5,6 +5,7 @@ import ScholarshipPopup from '../Scholarship/Scholarship'
 import AboutAndCourses from '../Courses/Courses'
 import WhyChooseUs from '../ChooseUs/ChooseUs'
 import DirectorSection from '../Director/Director'
+import Who from '../WhoWeAre/WhoWeAre'
 // import GetInTouchSection from '../GetInTouch/GetInTouch'
 
 
@@ -16,6 +17,7 @@ const Home = () => {
       <ScholarshipPopup />
       <AboutAndCourses />
       <WhyChooseUs />
+      <Who />
       <DirectorSection />
       {/* <GetInTouchSection /> */}
     </div>
