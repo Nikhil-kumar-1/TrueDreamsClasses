@@ -9,6 +9,14 @@ const Footer = () => {
     transition: { duration: 0.5 }
   };
 
+  const socialMedia = [
+    { name: 'Facebook', icon: 'fa-facebook-f', url: 'https://facebook.com/truedreamsclasses' },
+    { name: 'Instagram', icon: 'fa-instagram', url: 'https://instagram.com/truedreamsclasses' },
+    { name: 'Twitter', icon: 'fa-twitter', url: 'https://twitter.com/truedreamsclasses' },
+    { name: 'YouTube', icon: 'fa-youtube', url: 'https://youtube.com/truedreamsclasses' },
+    { name: 'LinkedIn', icon: 'fa-linkedin-in', url: 'https://linkedin.com/company/truedreamsclasses' }
+  ];
+
   return (
     <motion.footer 
       initial={{ opacity: 0 }}
@@ -27,9 +35,26 @@ const Footer = () => {
                 TrueDreams
               </h3>
             </Link>
-            <p className="text-gray-300 hover:text-white transition-colors duration-300">
-            At True Dreams Classes, we are committed to nurturing aspiring medical students and guiding them toward success in government medical college entrance exams.
+            <p className="text-gray-300 hover:text-white transition-colors duration-300 mb-4">
+              At True Dreams Classes, we are committed to nurturing aspiring medical students and guiding them toward success in government medical college entrance exams.
             </p>
+            
+            {/* Social Media Icons */}
+            <div className="flex space-x-4 mt-4">
+              {socialMedia.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3, scale: 1.1 }}
+                  className="w-8 h-8 rounded-full text-black hover:bg-blue-600 flex items-center justify-center transition-colors duration-300"
+                  aria-label={social.name}
+                >
+                  <i className={`fab ${social.icon} text-sm`}></i>
+                </motion.a>
+              ))}
+            </div>
           </motion.div>
 
           {/* Quick Links */}
@@ -42,7 +67,7 @@ const Footer = () => {
                 { path: "/about", name: "About" },
                 { path: "/contact", name: "Contact" },
                 { path: "/apply", name: "Apply Now" }
-              ].map((item, index) => (
+              ].map((item) => (
                 <motion.li 
                   key={item.name}
                   whileHover={{ x: 10 }}
@@ -64,11 +89,11 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 text-blue-400">Courses</h4>
             <ul className="space-y-2">
               {[
-                // { path: "/courses#jee", name: "JEE Preparation" },
-                { path: "/courses", name: "NEET Coaching" },
-                // { path: "/courses#foundation", name: "School Foundation" },
-                // { path: "/courses#olympiad", name: "Olympiad Programs" }
-              ].map((course, index) => (
+                { path: "/courses", name: "NEET UG Coaching" },
+                { path: "/courses", name: "NEET PG Coaching" },
+                { path: "/courses", name: "Foundation Course" },
+                { path: "/courses", name: "Crash Course" }
+              ].map((course) => (
                 <motion.li 
                   key={course.name}
                   whileHover={{ x: 10 }}
@@ -92,8 +117,9 @@ const Footer = () => {
               {[
                 { icon: "location", text: "123 Education Street, Patna, Bihar 800001" },
                 { icon: "phone", text: "+91 98765 43210", link: "tel:+919876543210" },
-                { icon: "email", text: "info@truedreams.com", link: "mailto:info@truedreams.com" }
-              ].map((item, index) => (
+                { icon: "phone", text: "+91 98765 43211", link: "tel:+919876543211" },
+                { icon: "email", text: "info@truedreamsclasses.com", link: "mailto:info@truedreamsclasses.com" }
+              ].map((item) => (
                 <motion.li 
                   key={item.text}
                   className="flex items-start group"
@@ -151,28 +177,53 @@ const Footer = () => {
           transition={{ delay: 0.6 }}
           className="border-t border-blue-800/30 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
-          <p className="text-gray-400 text-sm mb-4 md:mb-0 hover:text-gray-300 transition-colors duration-300">
-            © {new Date().getFullYear()} TrueDreams Educational Services. All rights reserved.
-          </p>
-          <div className="flex space-x-6">
-            <Link 
-              to="/privacy-policy" 
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              to="/terms" 
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm"
-            >
-              Terms of Service
-            </Link>
-            <Link 
-              to="/sitemap.xml" 
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm"
-            >
-              Sitemap
-            </Link>
+          <div className="text-center md:text-left mb-4 md:mb-0">
+            <p className="text-gray-400 text-sm hover:text-gray-300 transition-colors duration-300">
+              © {new Date().getFullYear()} TrueDreams Educational Services. All rights reserved.
+            </p>
+            <p className="text-gray-500 text-xs mt-1">
+              Empowering future doctors since 2015
+            </p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+            <div className="flex space-x-4">
+              <Link 
+                to="/privacy-policy" 
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                to="/terms" 
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm"
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                to="/sitemap.xml" 
+                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm"
+              >
+                Sitemap
+              </Link>
+            </div>
+            
+            {/* Newsletter Signup */}
+            <div className="mt-2 md:mt-0">
+              <form className="flex">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="px-3 py-1 text-sm text-black-800 border-1  border-black-800 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button 
+                  type="submit" 
+                  className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 text-sm rounded-r transition-colors duration-300"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
         </motion.div>
       </div>

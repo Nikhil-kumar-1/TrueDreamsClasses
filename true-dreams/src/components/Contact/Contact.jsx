@@ -196,7 +196,7 @@ const ContactPage = () => {
                 </li>
               </ul>
               <motion.a
-                href="mailto:info@truedreams.com" // Replace with actual email
+                href="mailto:info@truedreamsclasses.com" // Replace with actual email
                 whileHover={buttonHover}
                 className="mt-6 inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-lg shadow-md w-full"
               >

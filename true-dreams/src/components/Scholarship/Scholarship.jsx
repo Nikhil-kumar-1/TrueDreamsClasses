@@ -81,22 +81,22 @@ const ScholarshipPopup = () => {
 
         <div className="relative z-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-yellow-400">
-            🚀 Exclusive Scholarship Offer!
+            🚀 Exclusive Scholarship Opportunity!
           </h2>
 
           <div className="mb-6 p-4 bg-white/10 rounded-lg backdrop-blur-sm">
             <p className="text-lg font-semibold mb-2">
-              🎯 <span className="underline">Limited-Time:</span>{" "}
+              🎯 <span className="underline">Performance-Based Discounts:</span>{" "}
               <span className="text-yellow-300 font-bold">
-                Up to 75% Off!
+                Get Up to 75% Off!
               </span>
             </p>
             <p className="mb-3 text-sm md:text-base">
-              Score high in our Scholarship Test for massive discounts!
+              All students get 15% off, but top performers can unlock higher discounts up to 75%!
             </p>
 
             <p className="flex items-center gap-2 text-sm md:text-base">
-              💥 <span className="font-bold">Extra 15% Off for Everyone!</span>
+              💥 <span className="font-bold">Take our scholarship test to determine your discount level!</span>
             </p>
           </div>
 
@@ -104,31 +104,34 @@ const ScholarshipPopup = () => {
             {/* Top 10 */}
             <div className="bg-gradient-to-b from-yellow-600 to-yellow-700 p-2 rounded-lg text-center">
               <div className="text-3xl mb-1">🏆</div>
-              <h3 className="text-sm font-bold">Top 10</h3>
-              <p className="text-xl font-bold">25% Off</p>
+              <h3 className="text-sm font-bold">Top 10 Students</h3>
+              <p className="text-xl font-bold">75% Off</p>
+              <p className="text-xs">Highest performers</p>
             </div>
 
             {/* Next 20 */}
             <div className="bg-gradient-to-b from-gray-400 to-gray-600 p-2 rounded-lg text-center">
               <div className="text-3xl mb-1">🥈</div>
-              <h3 className="text-sm font-bold">Next 20</h3>
-              <p className="text-xl font-bold">15% Off</p>
+              <h3 className="text-sm font-bold">Next 20 Students</h3>
+              <p className="text-xl font-bold">50% Off</p>
+              <p className="text-xs">Excellent performance</p>
             </div>
 
             {/* All Students */}
             <div className="bg-gradient-to-b from-blue-500 to-blue-700 p-2 rounded-lg text-center">
               <div className="text-3xl mb-1">🎁</div>
-              <h3 className="text-sm font-bold">All Students</h3>
+              <h3 className="text-sm font-bold">All Participants</h3>
               <p className="text-xl font-bold">15% Off</p>
+              <p className="text-xs">Guaranteed for everyone</p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-2 mb-4">
             <div className="bg-red-600/90 px-3 py-1 rounded-full text-sm">
-              <p>🔥 Only {seatsLeft} seats left!</p>
+              <p>🔥 Only {seatsLeft} seats remaining!</p>
             </div>
             <div className="bg-black/30 px-3 py-1 rounded-full text-sm">
-              <p>⏳ Ends in {timeLeft.days}d {timeLeft.hours}h</p>
+              <p>⏳ Offer ends in {timeLeft.days}d {timeLeft.hours}h</p>
             </div>
           </div>
 
@@ -136,9 +139,9 @@ const ScholarshipPopup = () => {
             <Link to={"/apply"} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full text-sm md:text-base shadow-lg flex-1 flex items-center justify-center gap-2">
               Apply Now <span className="animate-bounce">🚀</span>
             </Link>
-            {/* <button className="bg-white hover:bg-gray-100 text-blue-900 font-bold py-2 px-6 rounded-full text-sm md:text-base shadow-lg flex-1 flex items-center justify-center gap-2">
-              Take Test <span>📝</span>
-            </button> */}
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-full text-sm md:text-base shadow-lg flex-1 flex items-center justify-center gap-2">
+              Take Scholarship Test <span>📝</span>
+            </button>
           </div>
         </div>
 

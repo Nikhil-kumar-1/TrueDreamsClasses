@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   useEffect(() => {
-    // Blinking animation for education icons
     const icons = document.querySelectorAll(".edu-icon");
     const interval = setInterval(() => {
       icons.forEach((icon) => {
@@ -16,13 +15,11 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Array of education-related emojis for floating icons
   const educationIcons = [
     "📚", "✏️", "🎓", "🧮", "🏆", "📝", "📖", "🔬", "🧪", "📊",
     "🧠", "👩‍🎓", "👨‍🎓", "🏫", "📓", "📌", "✒️", "📐", "🧲", "🔭"
   ];
 
-  // Function to generate random properties for falling icons
   const getFallingIconProps = () => ({
     initialY: -50 - Math.random() * 100,
     finalY: window.innerHeight + 50,
@@ -35,18 +32,33 @@ const HeroSection = () => {
   });
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 pt-16 pb-10 overflow-hidden min-h-screen">
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 z-0 opacity-90">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-purple-600/30 to-pink-500/30 animate-gradient-shift"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
+    <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 pt-16 pb-10 overflow-hidden min-h-screen">
+      {/* Background with animated particles */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVkaWNhbHxlbnwwfHwwfHx8MA%3D%3D')] bg-cover bg-center opacity-10000"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-5000/80 via-purple-900/80 to-blue-900/80"></div>
+        
+        {/* Animated floating dots */}
+        {[...Array(30)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white/10"
+            style={{
+              width: `${Math.random() * 10 + 5}px`,
+              height: `${Math.random() * 10 + 5}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float ${Math.random() * 15 + 10}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Animated falling education icons */}
+      {/* Falling education icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         {educationIcons.map((icon, index) => {
           const { initialY, finalY, delay, duration, size, left, opacity, color } = getFallingIconProps();
-          
           return (
             <motion.div
               key={index}
@@ -57,7 +69,8 @@ const HeroSection = () => {
                 color: color,
                 opacity: opacity,
                 zIndex: 1,
-                y: initialY
+                y: initialY,
+                textShadow: '0 0 8px rgba(255,255,255,0.5)'
               }}
               animate={{
                 y: finalY,
@@ -79,24 +92,26 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="relative z-10 bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-2xl border border-white/20">
+          <div className="relative z-10 bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-2xl border border-white/20">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
             >
-              Unlock Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Potential</span> With TrueDreams
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                TrueDreams
+              </span> - Your Gateway to Medical Success
             </motion.h1>
             
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-gray-700 mb-8 max-w-lg"
+              className="text-xl text-white/90 mb-8 max-w-lg font-medium"
             >
-              Dreaming of becoming a doctor? Join India’s premier coaching institute, trusted for its success.
-With expert faculty and a personalized approach, we help future doctors achieve their academic dreams.
+              Join India's most trusted NEET coaching institute with proven results. 
+              Our expert faculty and personalized approach will help you achieve your MBBS dreams.
             </motion.p>
             
             <motion.div
@@ -106,20 +121,20 @@ With expert faculty and a personalized approach, we help future doctors achieve 
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link to={"/courses"}>
-              <button cursorpointer className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-              <span  className="cursor-pointer">Explore Courses</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
+                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                  <span>Explore Courses</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </button>
               </Link>
               <Link to={"/apply"}>
-              <button  className="cursor-pointer bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-8 border border-gray-300 rounded-lg shadow transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
-                </svg>
-                <span className="cursor-pointer" >Apply Now</span>
-              </button>
+                <button className="bg-white/20 hover:bg-white/30 text-white font-semibold py-3 px-8 border border-white/30 rounded-lg shadow transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                  </svg>
+                  <span>Apply Now</span>
+                </button>
               </Link>
             </motion.div>
             
@@ -135,7 +150,7 @@ With expert faculty and a personalized approach, we help future doctors achieve 
                     key={item}
                     src={`https://randomuser.me/api/portraits/${item % 2 === 0 ? 'women' : 'men'}/${item + 20}.jpg`}
                     alt="Student"
-                    className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
+                    className="w-10 h-10 rounded-full border-2 border-white/50 shadow-sm"
                   />
                 ))}
               </div>
@@ -152,8 +167,8 @@ With expert faculty and a personalized approach, we help future doctors achieve 
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-700 text-sm mt-1">
-                Empowering <span className="font-semibold">students to start their </span> learning journey.
+                <p className="text-white/90 text-sm mt-1 font-medium">
+                  Trusted by <span className="font-bold">1000+ students</span> for NEET preparation
                 </p>
               </div>
             </motion.div>
@@ -164,66 +179,66 @@ With expert faculty and a personalized approach, we help future doctors achieve 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-white/90 backdrop-blur-sm p-12 rounded-xl shadow-2xl border border-white/20 relative z-10"
+            className="bg-gradient-to-br from-blue-800/80 to-purple-800/80 backdrop-blur-lg p-8 rounded-xl shadow-2xl border border-white/20 relative z-10"
           >
-            <div className="absolute -top-3 -right-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+            <div className="absolute -top-3 -right-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
               Free Consultation
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              Start Your Success Journey
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+              Start Your Medical Journey
             </h3>
             <form className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-white/90 mb-1">
                   Full Name
                 </label>
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/80"
+                  className="w-full px-4 py-3 rounded-lg border border-white/30 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition bg-white/10 text-white placeholder-white/70"
                   placeholder="Enter your name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-white/90 mb-1">
                   Email Address
                 </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/80"
+                  className="w-full px-4 py-3 rounded-lg border border-white/30 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition bg-white/10 text-white placeholder-white/70"
                   placeholder="Enter your email"
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="phone" className="block text-sm font-medium text-white/90 mb-1">
                   Phone Number
                 </label>
                 <input
                   type="tel"
                   id="phone"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/80"
+                  className="w-full px-4 py-3 rounded-lg border border-white/30 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition bg-white/10 text-white placeholder-white/70"
                   placeholder="Enter your phone"
                 />
               </div>
               <div>
-                <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="course" className="block text-sm font-medium text-white/90 mb-1">
                   Interested Course
                 </label>
                 <select
                   id="course"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/80"
+                  className="w-full px-4 py-3 rounded-lg border border-white/30 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition bg-white/10 text-white"
                 >
                   <option value="">Select a course</option>
-                  <option value="jee">JEE Preparation</option>
-                  <option value="neet">NEET Preparation</option>
-                  <option value="foundation">School Foundation</option>
-                  <option value="olympiad">Olympiad Coaching</option>
+                  <option value="neet">NEET UG Coaching</option>
+                  <option value="neetpg">NEET PG Coaching</option>
+                  <option value="foundation">Foundation Course</option>
+                  <option value="crash">Crash Course</option>
                 </select>
               </div>
               <button
                 type="submit"
-                className="cursor-pointer w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clipRule="evenodd" />
@@ -231,29 +246,22 @@ With expert faculty and a personalized approach, we help future doctors achieve 
                 Get Free Consultation
               </button>
             </form>
-            <p className="text-xs text-gray-500 mt-4 text-center">
+            <p className="text-xs text-white/70 mt-4 text-center">
               We respect your privacy. Your information will not be shared.
             </p>
           </motion.div>
         </div>
       </div>
 
-      
-
-      {/* CSS for animations */}
       <style jsx global>{`
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.3; }
         }
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient-shift {
-          background-size: 200% 200%;
-          animation: gradient-shift 15s ease infinite;
+        @keyframes float {
+          0% { transform: translateY(0) translateX(0); opacity: 0; }
+          10% { opacity: 0.3; }
+          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
         }
       `}</style>
     </section>

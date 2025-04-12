@@ -1,16 +1,28 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { FaUserMd, FaGraduationCap, FaChalkboardTeacher, FaAward, FaHeartbeat } from "react-icons/fa";
+import {
+  FaUserMd,
+  FaGraduationCap,
+  FaChalkboardTeacher,
+  FaAward,
+  FaHeartbeat,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white">
-       {/* Helmet for SEO */}
-       <Helmet>
+      {/* Helmet for SEO */}
+      <Helmet>
         <title>About Us | True Dreams Classes</title>
-        <meta name="description" content="Learn about True Dreams Classes - Shaping future doctors through innovative education, expert mentorship, and a proven track record of success." />
-        <meta name="keywords" content="True Dreams Classes, NEET coaching, medical entrance preparation, best NEET institute" />
+        <meta
+          name="description"
+          content="Learn about True Dreams Classes - Shaping future doctors through innovative education, expert mentorship, and a proven track record of success."
+        />
+        <meta
+          name="keywords"
+          content="True Dreams Classes, NEET coaching, medical entrance preparation, best NEET institute"
+        />
         <meta name="author" content="True Dreams Classes" />
       </Helmet>
       {/* Hero Section */}
@@ -18,19 +30,21 @@ const AboutUs = () => {
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-yellow-300">Shaping Future Doctors</span> with Excellence
+              <span className="text-yellow-300">Shaping Future Doctors</span>{" "}
+              with Excellence
             </h1>
             <p className="text-xl mb-8">
-              Transforming NEET aspirants into tomorrow's healthcare leaders through innovative education
+              Transforming NEET aspirants into tomorrow's healthcare leaders
+              through innovative education
             </p>
           </motion.div>
         </div>
@@ -38,7 +52,7 @@ const AboutUs = () => {
 
       {/* About Content */}
       <section className="overflow-x-hidden py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -59,12 +73,17 @@ const AboutUs = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white p-14 rounded-xl shadow-lg">
               <p className="text-lg text-gray-700 mb-6">
-                At True Dreams Classes, we are committed to nurturing aspiring medical students and guiding them toward success in government medical college entrance exams.
+                At True Dreams Classes, we are committed to nurturing aspiring
+                medical students and guiding them toward success in government
+                medical college entrance exams.
               </p>
               <p className="text-lg text-gray-700">
-                Founded by a team of experienced doctors and educators, our institute is dedicated to providing top-quality education, personalized mentorship, and a structured learning environment that fosters academic excellence.
+                Founded by a team of experienced doctors and educators, our
+                institute is dedicated to providing top-quality education,
+                personalized mentorship, and a structured learning environment
+                that fosters academic excellence.
               </p>
             </div>
             <div className="absolute -z-10 -inset-4 bg-gradient-to-r from-blue-200 to-purple-200 rounded-2xl opacity-60"></div>
@@ -78,20 +97,26 @@ const AboutUs = () => {
             className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white shadow-xl"
           >
             <div className="flex items-center mb-6">
-              <div className="bg-white/20 p-4 rounded-full mr-4">
-                <FaUserMd className="text-3xl" />
+              <div className="bg-white/20 rounded-full mr-4">
+                <img src="3.png" className="text-3xl w-20 h-20" />
               </div>
+
               <div>
-                <h3 className="text-2xl font-bold">Director - Dr. Gaurav Sinha</h3>
+                <h3 className="text-2xl font-bold">
+                  Director - Dr. Gaurav Sinha
+                </h3>
                 <p className="text-blue-100">MBBS(Honours), MD(IGIMS, Patna)</p>
               </div>
             </div>
             <p className="mb-6">
-              6 years of teaching experience in government medical colleges, specializing in innovative teaching methodologies and student mentorship.
+              6 years of teaching experience in government medical colleges,
+              specializing in innovative teaching methodologies and student
+              mentorship.
             </p>
             <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
               <p className="italic">
-                "Our vision is to create not just doctors, but compassionate healers who will transform healthcare in India."
+                "Our vision is to create not just doctors, but compassionate
+                healers who will transform healthcare in India."
               </p>
             </div>
           </motion.div>
@@ -113,17 +138,40 @@ const AboutUs = () => {
               <h3 className="text-2xl md:text-3xl font-bold">Our Mission</h3>
             </div>
             <p className="text-lg mb-8">
-              Our mission is to create future doctors by equipping students with best possible strategy and targeted knowledge to crack medical entrance exams. We believe in a student-centric approach, ensuring each student receives the stress tackling support required to achieve their dreams.
+              Our mission is to create future doctors by equipping students with
+              best possible strategy and targeted knowledge to crack medical
+              entrance exams. We believe in a student-centric approach, ensuring
+              each student receives the stress tackling support required to
+              achieve their dreams.
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { icon: <FaGraduationCap />, title: "Proven Methodology", text: "Structured curriculum designed by medical professionals" },
-                { icon: <FaChalkboardTeacher />, title: "Personalized Mentorship", text: "1:1 guidance from experienced faculty" },
-                { icon: <FaAward />, title: "Result-Oriented", text: "Consistent track record of top rankers" },
-                { icon: <FaUserMd />, title: "Doctor Educators", text: "Learn from doctors who cracked NEET" }
+                {
+                  icon: <FaGraduationCap />,
+                  title: "Proven Methodology",
+                  text: "Structured curriculum designed by medical professionals",
+                },
+                {
+                  icon: <FaChalkboardTeacher />,
+                  title: "Personalized Mentorship",
+                  text: "1:1 guidance from experienced faculty",
+                },
+                {
+                  icon: <FaAward />,
+                  title: "Result-Oriented",
+                  text: "Consistent track record of top rankers",
+                },
+                {
+                  icon: <FaUserMd />,
+                  title: "Doctor Educators",
+                  text: "Learn from doctors who cracked NEET",
+                },
               ].map((item, i) => (
-                <div key={i} className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                <div
+                  key={i}
+                  className="bg-white/10 p-4 rounded-lg backdrop-blur-sm"
+                >
                   <div className="flex items-center mb-2">
                     <div className="bg-white/20 p-2 rounded-full mr-3">
                       {item.icon}
@@ -150,10 +198,10 @@ const AboutUs = () => {
               { number: "10+", label: "Years Experience" },
               { number: "1000+", label: "Students Trained" },
               { number: "95%", label: "Success Rate" },
-              { number: "50+", label: "Top Rankers" }
+              { number: "50+", label: "Top Rankers" },
             ].map((stat, i) => (
               <div key={i} className="p-4">
-                <motion.p 
+                <motion.p
                   whileHover={{ scale: 1.05 }}
                   className="text-4xl font-bold text-blue-600 mb-2"
                 >
@@ -174,13 +222,16 @@ const AboutUs = () => {
           className="text-center"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            Ready to Begin Your <span className="text-blue-600">Medical Journey</span>?
+            Ready to Begin Your{" "}
+            <span className="text-blue-600">Medical Journey</span>?
           </h3>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-            Join hundreds of successful medical students who started their journey with True Dreams Classes
+            Join hundreds of successful medical students who started their
+            journey with True Dreams Classes
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to={"/contact"}
+            <Link
+              to={"/contact"}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full"
