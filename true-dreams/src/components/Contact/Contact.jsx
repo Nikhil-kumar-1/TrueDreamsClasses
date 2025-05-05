@@ -6,44 +6,84 @@ import {
   FaClock,
   FaPaperPlane,
 } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { backendUrl } from "../../config/config";
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
+  // EmailJS Configuration
+  const EMAILJS_SERVICE_ID = "service_eycz99e";
+  const EMAILJS_TEMPLATE_ID = "template_f249iaj";
+  const EMAILJS_PUBLIC_KEY = "dzPgZ_vHjBpGK4GHA";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const icons = document.querySelectorAll(".edu-icon");
+    const interval = setInterval(() => {
+      icons.forEach((icon) => {
+        const randomDelay = Math.random() * 3;
+        icon.style.animation = `blink 1.5s ease ${randomDelay}s infinite`;
+        icon.style.WebkitAnimation = `blink 1.5s ease ${randomDelay}s infinite`;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(`${backendUrl}/api/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    setIsSubmitting(true);
+    
+    const data = {
+      name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      to_name: "TrueDreams Admin"
+    };
 
-      if (response.ok) {
-        // Clear form data after successful submission
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        alert("Message Sent Successfully!"); // Replaced toast with alert
+    try {
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        data,
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      if (response.status === 200) {
+        alert("Details submit successfully! We'll contact you soon.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
       } else {
-        alert("Something went wrong!"); // Replaced toast with alert
+        throw new Error("Failed to send email");
       }
     } catch (error) {
-      alert("Something went wrong!"); // Replaced toast with alert
+      console.error("Error sending email:", error);
+      alert("Failed to send your request. Please try again later or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Helmet for SEO */}
@@ -83,7 +123,7 @@ const ContactPage = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className=" bg-blue-800 text-white py-16">
+      <section className="bg-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
           <p className="text-lg">
@@ -282,9 +322,11 @@ const ContactPage = () => {
                     </div>
                     <button
                       type="submit"
-                      className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition flex items-center justify-center"
+                      disabled={isSubmitting}
+                      className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition flex items-center justify-center disabled:bg-blue-400"
                     >
-                      <FaPaperPlane className="mr-2" /> Send Message
+                      <FaPaperPlane className="mr-2" /> 
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 </div>

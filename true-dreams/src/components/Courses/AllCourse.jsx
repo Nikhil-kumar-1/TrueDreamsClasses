@@ -268,7 +268,7 @@ const Courses = () => {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="cursor-pointer flex flex-col sm:flex-row justify-center gap-4">
             <Link
               to="/contact"
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full flex items-center justify-center gap-2"

@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import axios from "axios";
+import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
-import { backendUrl } from "../../config/config";
 
 const ApplyNow = () => {
+  // EmailJS Configuration
+  const EMAILJS_SERVICE_ID = "service_iyzt6zu";
+  const EMAILJS_TEMPLATE_ID = "template_2hqealb";
+  const EMAILJS_PUBLIC_KEY = "dzPgZ_vHjBpGK4GHA";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +38,7 @@ const ApplyNow = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name.trim()) newErrors.name = "Full name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
@@ -48,39 +52,63 @@ const ApplyNow = () => {
     }
     if (!formData.grade) newErrors.grade = "Current class is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post(`${backendUrl}/api/applications`, formData);
-      setSubmitStatus({
-        success: true,
-        message: "Application submitted successfully! We'll contact you soon.",
-      });
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        grade: "",
-        city: "",
-        reference: "",
-      });
+      // Prepare EmailJS data
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        grade: formData.grade,
+        city: formData.city,
+        reference: formData.reference || "Not specified",
+        to_name: "TrueDreams Admin",
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      if (response.status === 200) {
+        setSubmitStatus({
+          success: true,
+          message:
+            "Application submitted successfully! We'll contact you soon.",
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          grade: "",
+          city: "",
+          reference: "",
+        });
+      } else {
+        throw new Error("Email sending failed");
+      }
     } catch (error) {
       console.error("Error submitting application:", error);
       setSubmitStatus({
         success: false,
-        message: error.response?.data?.message || "Failed to submit application. Please try again.",
+        message:
+          "Failed to submit application. Please try again or contact us directly.",
       });
     } finally {
       setIsSubmitting(false);
@@ -135,7 +163,7 @@ const ApplyNow = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-blue-800 mb-6 text-center">
             Apply for NEET 2025 Batch
           </h2>
-          
+
           {submitStatus && (
             <div
               className={`mb-6 p-4 rounded-lg ${
@@ -224,7 +252,6 @@ const ApplyNow = () => {
                     <option value="">Select Class</option>
                     <option value="11th">11th Standard</option>
                     <option value="12th">12th Standard</option>
-                    <option value="Dropper">Dropper</option>
                     <option value="Repeater">Repeater</option>
                   </select>
                   {errors.grade && (
